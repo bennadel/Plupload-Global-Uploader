@@ -1,0 +1,6 @@
+
+# Don't commit credentials to repo.
+config.json
+
+# Don't commit the CodeKit project file.
+config.codekit

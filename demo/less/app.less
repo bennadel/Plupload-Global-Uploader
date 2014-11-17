@@ -1,0 +1,214 @@
+
+body {
+	background-color: #FFFFFF ;
+	color: #333333 ;
+	font-family: helvetica, verdana, arial ;
+	margin: 10px 10px 10px 10px ;
+} // END: body.
+
+a[ ng-click ] {
+	cursor: pointer ;
+	text-decoration: underline ;
+}
+
+div.m-global-uploader {
+	background-color: #363636 ;
+	bottom: -110px ; // Start out hidden.
+	height: 100px ;
+	left: 0px ;
+	position: fixed ;
+	right: 0px ;
+	transition: bottom 0.3s ease ;
+		-webkit-transition: bottom 0.3s ease ;
+	z-index: 100 ;
+
+	ul.queue {
+		bottom: 12px ;
+		border: 1px dashed #555555 ;
+		border-radius: 5px 5px 5px 5px ;
+		height: 62px ;
+		left: 12px ;
+		list-style-type: none ;
+		margin: 0px 0px 0px 0px ;
+		overflow: hidden ;
+		position: absolute ;
+		padding: 5px 5px 5px 5px ;
+		right: 12px ;
+		top: 12px ;
+
+		&:after {
+			clear: both ;
+			content: "" ;
+			display: block ;
+			height: 0px ;
+		}
+	}
+
+	li.item {
+		border: 1px solid #555555 ;	
+		border-radius: 3px 3px 3px 3px ;
+		color: #CCCCCC ;
+		float: left ;
+		font-size: 16px ;
+		height: 50px ;
+		line-height: 50px ;
+		margin: 5px 5px 5px 5px ;
+		text-align: center ;
+		width: 50px ;
+	}
+
+	#m-global-uploader-container {
+		bottom: -1px ;
+		font-size: 1px ;
+		height: 1px ;
+		line-height: 1px ;
+		position: absolute ;
+		right: -1px ;
+		width: 1px ;
+	}
+
+	#m-global-uploader-button {
+		bottom: 0px ;
+		left: 0px ;
+		position: absolute ;
+		right: 0px ;
+		top: 0px ;
+	}
+
+	// div.m-global-uploader -- variations.
+
+	&.active {
+		bottom: 0px ;		
+	}
+} // END: div.m-global-uploader.
+
+p.m-section-selector {
+	a {
+		&.active {
+			font-weight: bold ;
+		}
+	}
+} // END: p.m-section-selector.
+
+div.m-section-uploader {
+	background-color: #F0F0F0 ;
+	border: 2px dashed #CCCCCC ;
+	border-radius: 4px 4px 4px 4px ;
+	height: 100px ;
+	margin: 20px 0px 20px 0px ;
+
+	div.instructions {
+		font-size: 20px ;
+		height: 100px ;
+		line-height: 104px ;
+		text-align: center ;
+
+		span.ready {
+			display: block ;
+		}
+
+		span.hold {
+			display: none ;
+		}
+	}
+
+	// div.m-section-uploader -- variations.
+
+	&.busy {
+		div.instructions {
+			span.ready {
+				display: none ;
+			}
+
+			span.hold {
+				display: block ;
+			}
+		}
+	}
+} // END: div.m-section-uploader.
+
+ul.m-images {
+	list-style-type: none ;
+	margin: 20px 0px 20px 0px ;
+	padding: 0px 0px 0px 0px ;
+	position: relative ;
+
+	li.image {
+		background-color: #FAFAFA ;
+		border: 1px solid #CCCCCC ;
+		border-radius: 3px 3px 3px 3px ;
+		float: left ;
+		height: 154px ;
+		margin: 0px 14px 14px 0px ;
+		padding: 15px 15px 1px 15px ;
+		position: relative ;
+		width: 150px ;
+
+		// li.image -- variations.
+
+		&:hover {
+			a.delete {
+				display: block ;
+			}
+		}
+	}
+
+	div.thumbnail {
+		border: 1px solid #E0E0E0 ;
+		height: 115px ;
+		margin: 0px 0px 10px 0px ;
+		overflow: hidden ;
+		width: 148px ;
+
+		img {
+			border-width: 0px 0px 0px 0px ;
+			display: block ;
+			width: 148px ;
+		}
+
+		span {
+			background-color: #333333 ;
+			color: #F0F0F0 ;
+			display: block ;
+			font-size: 14px ;
+			font-style: italic ;
+			height: 115px ;
+			line-height: 115px ;
+			text-align: center ;
+			width: 148px ;
+		}
+	}
+
+	div.name {
+		font-size: 13px ;
+		font-weight: bold ;
+		overflow: hidden ;
+		text-overflow: ellipsis ;
+		white-space: nowrap ;
+		width: 150px ;
+	}
+
+	a.delete {
+		background-color: #FFDADA ;
+		border: 2px solid #CC0000 ;
+		border-radius: 20px 20px 20px 20px ;
+		color: #CC0000 ;
+		display: none ;
+		font-weight: 800 ;
+		height: 20px ;
+		line-height: 20px ;
+		position: absolute ;
+		right: 6px ;
+		text-align: center ;
+		text-decoration: none ;
+		top: 6px ;
+		width: 20px ;
+	}
+
+	&:after {
+		content: "" ;
+		display: block ;
+		clear: both ;
+		height: 0px ;
+	}
+} // END: div.m-images.

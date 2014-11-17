@@ -1,0 +1,180 @@
+<!doctype html>
+<html ng-app="PluploadApp">
+<head>
+	<meta charset="utf-8" />
+
+	<title>
+		Using Plupload As A Global Uploader In AngularJS
+	</title>
+
+	<link rel="stylesheet" type="text/css" href="css/app.css"></link>
+</head>
+<body ng-controller="HomeController">
+
+	<h1>
+		Using Plupload As A Global Uploader In AngularJS
+	</h1>
+
+
+	<!-- BEGIN: Global Uploader. -->
+	<div 
+		bn-global-uploader 
+		class="m-global-uploader"
+		ng-class="{ active: queue.length }">
+
+		<ul class="queue">
+			<li 
+				ng-repeat="item in queue track by item.id" 
+				class="item">
+
+				{{ item.percent }}%
+
+			</li>
+		</ul>
+
+	</div>
+	<!-- END: Global Uploader. -->
+
+
+	<!-- BEGIN: Section Selection. -->
+	<p class="m-section-selector">
+		Choose a section: 
+		<a 
+			ng-click="showSectionOne()" 
+			ng-class="{ active: ( section == 'one' ) }"
+			>Section One</a>
+
+		&nbsp;|&nbsp;
+
+		<a 
+			ng-click="showSectionTwo()"
+			ng-class="{ active: ( section == 'two' ) }"
+			>Section Two</a>
+	</p>
+	<!-- END: Section Selection. -->
+
+
+	<!-- BEGIN: Sections. -->
+	<div ng-switch="section">
+
+		<!-- BEGIN: Section One. -->
+		<div 
+			ng-switch-when="one"
+			ng-controller="SectionOneController">
+
+
+			<h2>
+				Section One
+			</h2>
+
+			<!-- BEGIN: Local Uploader. -->
+			<div 
+				bn-section-uploader="saveFiles( files )"
+				class="m-section-uploader">
+				
+				<div class="instructions">
+					<span class="ready">Drag &amp; Drop Images for Section One</span>
+					<span class="hold">Preparing Upload...</span>
+				</div>
+
+			</div>
+			<!-- END: Local Uploader. -->
+
+			<!-- BEGIN: Image List. -->
+			<ul class="m-images">
+				<li 
+					ng-repeat="image in images" 
+					class="image">
+
+					<div ng-switch="image.isPlaceHolder" class="thumbnail">
+						<span ng-switch-when="true">Uploading...</span>
+						<img ng-switch-when="false" ng-src="{{ image.imageUrl }}" />
+					</div>
+
+					<div class="name">
+						{{ image.clientFile }}
+					</div>
+
+					<a ng-click="deleteImage( image )" class="delete">&times;</a>
+
+				</li>
+			</ul>
+			<!-- END: Image List. -->
+
+
+		</div>
+		<!-- END: Section One. -->
+
+
+		<!-- BEGIN: Section Two. -->
+		<div 
+			ng-switch-when="two"
+			ng-controller="SectionTwoController">
+
+
+			<h2>
+				Section Two
+			</h2>
+
+			<!-- BEGIN: Local Uploader. -->
+			<div 
+				bn-section-uploader="saveFiles( files )"
+				class="m-section-uploader">
+				
+				<div class="instructions">
+					<span class="ready">Drag &amp; Drop Images for Section Two</span>
+					<span class="hold">Preparing Upload...</span>
+				</div>
+
+			</div>
+			<!-- END: Local Uploader. -->
+
+			<!-- BEGIN: Image List. -->
+			<ul class="m-images">
+				<li 
+					ng-repeat="image in images" 
+					class="image">
+
+					<div ng-switch="image.isPlaceHolder" class="thumbnail">
+						<span ng-switch-when="true">Uploading...</span>
+						<img ng-switch-when="false" ng-src="{{ image.imageUrl }}" />
+					</div>
+
+					<div class="name">
+						{{ image.clientFile }}
+					</div>
+
+					<a ng-click="deleteImage( image )" class="delete">&times;</a>
+
+				</li>
+			</ul>
+			<!-- END: Image List. -->
+
+
+		</div>
+		<!-- END: Section Two. -->
+
+	</div>
+	<!-- END: Sections. -->
+
+
+	<!-- Vendor Scripts. -->
+	<script type="text/javascript" src="vendor/jquery/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="vendor/angular/angular-1.2.26.min.js"></script>
+	<script type="text/javascript" src="vendor/plupload/plupload.full.min.js"></script>
+	<script type="text/javascript" src="vendor/lodash/lodash-2.4.1.min.js"></script>
+
+	<!-- Application Scripts. -->
+	<script type="text/javascript" src="app/app.js"></script>
+	<script type="text/javascript" src="app/global-uploader/global-uploader-directive.js"></script>
+	<script type="text/javascript" src="app/home/home-controller.js"></script>
+	<script type="text/javascript" src="app/section-one/section-controller.js"></script>
+	<script type="text/javascript" src="app/section-two/section-controller.js"></script>
+	<script type="text/javascript" src="app/section-uploader/section-uploader-directive.js"></script>
+	<script type="text/javascript" src="app/services/image-service.js"></script>
+	<script type="text/javascript" src="app/services/lodash-service.js"></script>
+	<script type="text/javascript" src="app/services/natural-sort-service.js"></script>
+	<script type="text/javascript" src="app/services/plupload-service.js"></script>
+
+</body>
+</html>
